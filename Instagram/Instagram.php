@@ -90,6 +90,15 @@ class Instagram extends \Instagram\Core\BaseObjectAbstract {
     }
 
     /**
+     * @return \Instagram\User
+     */
+    public function getUserSelf() {
+        $user = new User($this->proxy->getUserSelf(), $this->proxy);
+
+        return $user;
+    }
+
+    /**
      * Get user by Username
      *
      * Retrieve a user given their username
@@ -204,6 +213,18 @@ class Instagram extends \Instagram\Core\BaseObjectAbstract {
         $params = (array)$params;
         $params['q'] = $query;
         $user_collection = new UserCollection( $this->proxy->searchUsers( $params ), $this->proxy );
+        return $user_collection;
+    }
+
+    /**
+     * @param array|null $params
+     * @return UserCollection
+     * @throws Core\APIException
+     */
+    public function getUsersSelfMediaRecent(array $params = null)
+    {
+        $params = (array)$params;
+        $user_collection = new UserCollection( $this->proxy->getUsersSelfMediaRecent( $params ), $this->proxy );
         return $user_collection;
     }
 

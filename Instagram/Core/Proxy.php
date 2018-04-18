@@ -181,6 +181,20 @@ class Proxy {
     }
 
     /**
+     * Get user self
+     *
+     * @return StdClass Returns the user data
+     * @access public
+     */
+    public function getUserSelf() {
+        $response = $this->apiCall(
+            'get',
+            sprintf( '%s/users/self', $this->api_url)
+        );
+        return $response->getData();
+    }
+
+    /**
      * Get a user's follows
      * 
      * @param string $id User's ID
@@ -428,6 +442,22 @@ class Proxy {
             $this->api_url . '/users/self/media/liked',
             $params
         );
+        return $response->getRawData();
+    }
+
+    /**
+     * @param array|null $params
+     * @return mixed
+     * @throws APIException
+     */
+    public function getUsersSelfMediaRecent(array $params = null)
+    {
+        $response = $this->apiCall(
+            'get',
+            $this->api_url . '/users/self/media/recent',
+            $params
+        );
+
         return $response->getRawData();
     }
 
