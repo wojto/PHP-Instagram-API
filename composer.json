@@ -5,6 +5,7 @@
     "keywords": ["instagram"],
     "homepage": "https://github.com/wojto/PHP-Instagram-API",
     "license": "MIT",
+    "version": "1.0",
     "repositories": [
         {
             "type": "vcs",
